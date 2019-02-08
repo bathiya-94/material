@@ -27,7 +27,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     Material.MatSortModule,
     Material.MatDialogModule,
     Material.MatCardModule,
-    Material.MatChipsModule
+    Material.MatChipsModule,
+    Material.MatAutocompleteModule
   ],
   exports : [
     Material.MatToolbarModule,
@@ -48,7 +49,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     Material.MatSortModule,
     Material.MatDialogModule,
     Material.MatCardModule,
-    Material.MatChipsModule
+    Material.MatChipsModule,
+    Material.MatAutocompleteModule
 
   ],
 })

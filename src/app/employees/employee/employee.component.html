@@ -23,12 +23,36 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <mat-select formControlName = "skills" placeholder ="Skills" multiple>
-            <mat-option>None</mat-option>
-            <ng-container *ngFor = "let skill of skills">
-              <mat-option value="{{skill.skill}}">{{skill.skill}}</mat-option>
-            </ng-container>
-          </mat-select>
+          <!--<mat-select formControlName = "skills" placeholder ="Skills" multiple>-->
+            <!--<mat-option>None</mat-option>-->
+            <!--<ng-container *ngFor = "let skill of skills">-->
+              <!--<mat-option value="{{skill.skill}}">{{skill.skill}}</mat-option>-->
+            <!--</ng-container>-->
+          <!--</mat-select>-->
+          <mat-chip-list #chipList>
+            <mat-chip
+              *ngFor="let skill of selectedSkills"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(skill)">
+              {{skill}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input
+              placeholder="Add new skill."
+              #skillInput
+              [formControl]= "skillCtrl"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              >
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+              {{skill}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
         <div class ="button-row">
           <button mat-raised-button color="primary" type="submit" [disabled]="employeeService.form.invalid">Submit</button>
