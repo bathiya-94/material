@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <span style="text-align: center">{{skillService.form.controls['id'].value?"Update SKill":"Add New Skill"}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup] = "skillService.form" class="normal-form" (submit)="onSubmit()">
+  <mat-grid-list cols="1" rowHeight ="300px">
+    <mat-grid-tile>
+      <div class ="controllers-container">
+        <input type = "hidden" formControlName="id"/>
+        <mat-form-field>
+          <input formControlName = "skill" matInput placeholder="Skill">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        <div class ="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="skillService.form.invalid">Submit</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

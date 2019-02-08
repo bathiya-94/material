@@ -1,0 +1,20 @@
+ #close-button{
+  height: 40px;
+  background-color: white;
+}
+#no-button{
+  height: 50px;
+  width:50%;
+  background-color: #fc7169;
+  color:white;
+  border-radius: 0px;
+}
+
+ #yes-button{
+  height: 50px;
+  width:50%;
+  background-color: #b6bece;
+  color:white;
+  border-radius: 0px;
+}
+
