@@ -95,6 +95,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit() {
+    this.employeeService.form.controls.skills.setValue(this.selectedSkills);
     const employee = this.employeeService.form.value;
     const  employee1: Employee = new Employee(employee.id, employee.name, employee.email, employee.dob, employee.skills);
     this.createEmployee(employee1);
