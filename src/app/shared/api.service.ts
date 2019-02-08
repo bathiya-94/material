@@ -27,7 +27,7 @@ export class ApiService {
   public  getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.GET_ALL_EMPLOYEES);
   }
-  public  deleteEmployee(id: Long): Observable<any> {
+  public  deleteEmployee(id: number): Observable<any> {
     return this.http.delete(this.DELETE_EMPLOYEES_URL + id.toString());
   }
   public  createSkill(skill: Skill): Observable<any> {

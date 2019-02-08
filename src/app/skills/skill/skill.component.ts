@@ -4,8 +4,7 @@ import {SkillService} from '../../shared/skill.service';
 import {ApiService} from '../../shared/api.service';
 import {NotificationService} from '../../shared/notification.service';
 import {Skill} from '../../models/skill';
-import {Employee} from '../../models/employee';
-import {EmployeeComponent} from '../../employees/employee/employee.component';
+
 
 @Component({
   selector: 'app-skill',
@@ -42,19 +41,6 @@ export class SkillComponent implements OnInit {
     this.onClose();
 
   }
-  onEdit(row) {
-    this.employeeService.populateForm(row);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
-    this.dialog.open(EmployeeComponent, dialogConfig).afterClosed().subscribe(
-      res => {
-        this.getAllEmp();
-      }
-    );
-  }
-
   public  createSkill(skill: Skill) {
     this.apiService.createSkill(skill).subscribe(
       res => {
