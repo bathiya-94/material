@@ -46,9 +46,6 @@ export class EmployeeComponent implements OnInit {
       this.selectedSkills.splice(index, 1);
       this.allSkills.push(skill);
     }
-    console.log(this.filteredSkills);
-    console.log(this.selectedSkills);
-    console.log(this.allSkills);
   }
 
   selected (event: MatAutocompleteSelectedEvent): void {
@@ -58,21 +55,16 @@ export class EmployeeComponent implements OnInit {
     this.skillCtrl.setValue(null);
 
     this.allSkills.splice(index, 1);
-
-    console.log(this.filteredSkills);
-    console.log(this.selectedSkills);
-    console.log(this.allSkills);
   }
 
   private _filter (value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.allSkills.filter(skill => skill.toLowerCase().indexOf(filterValue) === 0);
   }
-  //skills: Skill[];
+
   public  getAllSkills() {
     this.apiService.getAllSKills().subscribe(
         res => {
-          //this.skills = res;
          this.allSkills = res.map( skill => skill.skill);
         },
         err => {
